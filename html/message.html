@@ -1,0 +1,20 @@
+{{ define "header" }}
+<style>
+    h3 {
+        margin: 2rem 0 1rem 0;
+        font-size: 1.5rem;
+        color: #007bff;
+    }
+    p {
+        margin: 0.5rem 0;
+    }
+</style>
+{{ end }}
+
+{{ define "content" }}
+<h3>{{ .Title }}</h3>
+{{ range $i, $p := .Paragraphs }}
+<p>{{ $p }}</p>
+{{ end }}
+<p><a href="/" style="color: #ff7f00; text-decoration: none;">Back to home</a></p>
+{{ end }}

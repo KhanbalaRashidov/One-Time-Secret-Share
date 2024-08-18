@@ -1,0 +1,23 @@
+{{ define "content" }}
+<section class="notfound-container">
+    <h2>{{.Title}}</h2>
+    <p>{{.Message}}</p>
+    <a href="/" style="color: #ff7f00; text-decoration: none;">Back to home</a>
+</section>
+
+<style>
+    .notfound-container {
+        max-width: 700px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: #fff;
+        color: #333;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    h2 {
+        color: #f00;
+    }
+</style>
+{{ end }}

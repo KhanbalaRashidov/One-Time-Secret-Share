@@ -1,0 +1,54 @@
+{{ define "layout" }}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure self-destructing notes">
+    <meta name="author" content="Dustin Moris Gorski">
+    <title>One Time Secret Url</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(45deg, #007bff, #ff7f00);
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        h2 {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        main {
+            padding: 2rem;
+        }
+    </style>
+    {{ template "header" . }}
+</head>
+<body>
+<header>
+    <h3>One Time Secret Url</h3>
+</header>
+<main>
+    {{ template "content" . }}
+</main>
+<footer>
+    <!-- Footer content if any -->
+</footer>
+</body>
+</html>
+{{ end }}
+
+{{ define "header" }}
+<!-- Header content goes here -->
+{{ end }}

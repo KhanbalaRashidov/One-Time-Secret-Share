@@ -1,0 +1,147 @@
+{{ define "content" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Created</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 2rem;
+            background-color: #f4f4f4;
+        }
+        .message-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .note-url-container {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .url-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        #noteURL {
+            width: calc(100% - 50px); /* Adjust width based on button size */
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            text-align: center;
+            background: #f4f4f9;
+            color: #333;
+        }
+        .copy-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .copy-button:hover {
+            background: linear-gradient(45deg, #0056b3, #007bff);
+            transform: scale(1.05);
+        }
+        .copy-button svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+        .note-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(45deg, #007bff, #ff7f00);
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .note-button:hover {
+            background: linear-gradient(45deg, #0056b3, #e65c00);
+            transform: scale(1.05);
+        }
+        /* Toast styles */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745; /* Green background */
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 1000;
+        }
+        .toast.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="message-container">
+    <p>Note was successfully created</p>
+    <div class="note-url-container">
+        <div class="url-container">
+            <input id="noteURL" type="text" value="{{ .NoteURL }}" readonly>
+            <button class="copy-button" onclick="copyToClipboard()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M19 7h-6v2h6v12h-12v-12h6v-2h-6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm-2 14h-8v-8h8v8z"/></svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast">URL copied to clipboard!</div>
+
+<script>
+    function copyToClipboard() {
+        var copyText = document.getElementById("noteURL");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        navigator.clipboard.writeText(copyText.value)
+            .then(() => {
+                showToast("URL copied to clipboard!");
+            })
+            .catch(err => {
+                console.error("Failed to copy URL: ", err);
+            });
+    }
+
+    function showToast(message) {
+        var toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 3000); // Hide after 3 seconds
+    }
+</script>
+</body>
+</html>
+{{ end }}
