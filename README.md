@@ -7,15 +7,16 @@ One-Time Secret Share is a secure application for sharing one-time viewable mess
 The project directory is organized as follows:
 
 
+```
 one-time-secret-share/
-├── html/
-│ ├── header.html # Common header template
-│ ├── index.html # Home page template
-│ ├── layout.html # Base layout template
-│ ├── message.html # Template for displaying messages
-│ ├── note.html # Template for displaying a single note
-│ ├── notfound.html # Template for 404 error page
-│ └── success.html # Template for success messages
+├── html
+    ├── header.html # Common header template
+    ├── index.html # Home page template
+    ├── layout.html # Base layout template
+    ├── message.html # Template for displaying messages
+    ├── note.html # Template for displaying a single note
+    ├── notfound.html # Template for 404 error page
+    └── success.html # Template for success messages
 ├── handler.go # HTTP request handlers
 ├── helpers.go # Helper functions for error handling and template rendering
 ├── models.go # Data models for the application
@@ -23,6 +24,8 @@ one-time-secret-share/
 ├── Dockerfile # Docker configuration for building and running the application
 ├── docker-compose.yml # Docker Compose configuration for services
 └── README.md # This documentation file
+```
+
 
 
 
