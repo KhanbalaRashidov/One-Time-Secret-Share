@@ -39,7 +39,7 @@ one-time-secret-share/
 
 ### Prerequisites
 
-- [Go](https://golang.org/doc/install) (version X.X or later)
+- [Go](https://golang.org/doc/install) (version 1.22.5 or later)
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
